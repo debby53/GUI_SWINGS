@@ -1,16 +1,20 @@
 package JAVA_HOMEWORK;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginForm {
     public static void main(String[] args) {
+//        create a frame
         JFrame frame=new JFrame("LOGIN FORM");
         frame.setSize(700,400);
         frame.setResizable(false);
-        JLabel userName=new JLabel("enter your username ");
-        JLabel password=new JLabel("enter your password");
+
+        frame.getContentPane().setBackground(new Color(240,240,240));
+        JLabel userName=new JLabel(" username ");
+        JLabel password=new JLabel(" password");
         JTextField txtName=new JTextField();
         JTextField txtPass=new JTextField();
         JButton log=new JButton("login");
@@ -25,6 +29,19 @@ public class LoginForm {
         clear.setBounds(270,140,100,30);
         lblMessage.setBounds(100, 200, 300, 30);
 
+
+//     customise fonts and colors
+        userName.setFont(new Font("Arial",Font.BOLD,14));
+        password.setFont(new Font("Arial",Font.BOLD,14));
+        lblMessage.setFont(new Font("Arial", Font.BOLD, 14));
+        lblMessage.setForeground(Color.RED); // Error message in red
+
+        log.setBackground(new Color(76,175,80));
+        log.setForeground(Color.WHITE);
+        clear.setBackground(new Color(244, 67, 54)); // Red button
+        clear.setForeground(Color.WHITE);
+
+//     // Add Components to Frame
         frame.setLayout(null);
         frame.add(userName);
         frame.add(password);
@@ -33,6 +50,7 @@ public class LoginForm {
         frame.add(log);
         frame.add(clear);
         frame.add(lblMessage);
+        frame.setLocationRelativeTo(null);
 
         log.addActionListener(new ActionListener() {
             @Override
@@ -41,8 +59,10 @@ public class LoginForm {
                String pswd=new String(txtPass.getText());
                if(name.equals("java")&& pswd.equals("auca@123")){
                    lblMessage.setText("WELCOME TO JAVA");
+                   lblMessage.setForeground(new Color(34, 139, 34));
                }else {
                    lblMessage.setText("Incorrect username/password. try again");
+                   lblMessage.setForeground(Color.RED);
                }
 
             }
